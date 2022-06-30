@@ -67,10 +67,10 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 # Design decisions and considerations<a name="design"></a>
-# Overall decisions
+## Overall decisions
 A global redux store was added to synchronise data between the components. This made routing data and actions easier overall between components.
 
-# Testing
+## Testing
 Had I not been sick, I would have developed more tests using Jest/ReactTestinglibrary  that tested:
 - The UI components
     - Front end styling
@@ -84,7 +84,7 @@ Had I not been sick, I would have developed more tests using Jest/ReactTestingli
     - Handling of success, loading, error states
     - Handling of data with more attention to if the response comes back empty, or structured incorrectly etc.
 
-# Future work
+## Future work
 More work could be done on:
 - Making the fill color dynamic so there is less need for previous state
 - Making the indexing of objects in the canvas file not a separate text object
