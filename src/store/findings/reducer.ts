@@ -3,7 +3,6 @@ import {
     FETCH_FINDINGS_REQUEST,
     FETCH_FINDINGS_SUCCESS,
     FETCH_FINDINGS_FAILURE,
-    UNSET_SELECTED_FINDING,
     SET_SELECTED_FINDING,
   } from "./actionTypes";
   
@@ -41,11 +40,6 @@ import {
         return {
           ...state,
           selectedFinding: action.payload.id,
-        };
-      case UNSET_SELECTED_FINDING:
-        return {
-          ...state,
-          selectedFinding: action.payload.id
         };
       default:
         return {

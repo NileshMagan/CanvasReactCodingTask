@@ -67,8 +67,8 @@ Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 # Design decisions and considerations<a name="design"></a>
-# Efficiency
-A global redux store was added to synchronise data between the components 
+# Overall decisions
+A global redux store was added to synchronise data between the components. This made routing data and actions easier overall between components.
 
 # Testing
 Had I not been sick, I would have developed more tests that tested:

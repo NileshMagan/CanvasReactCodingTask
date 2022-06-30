@@ -3,7 +3,6 @@ import {
     FETCH_FINDINGS_SUCCESS,
     FETCH_FINDINGS_FAILURE,
     SET_SELECTED_FINDING,
-    UNSET_SELECTED_FINDING,
   } from "./actionTypes";
   
   export interface IFinding {
@@ -51,24 +50,14 @@ import {
   export interface SetSelectedFindingPayload {
     id: number;
   }
-  
-  export interface UnsetSelectedFindingPayload {
-    id: number;
-  }
 
   export type SetSelectedFinding = {
     type: typeof SET_SELECTED_FINDING;
     payload: SetSelectedFindingPayload;
   };
 
-  export type UnsetSelectedFinding = {
-    type: typeof UNSET_SELECTED_FINDING;
-    payload: UnsetSelectedFindingPayload;
-  };
-  
   export type FindingsActions =
     | FetchFindingsRequest
     | FetchFindingsSuccess
     | FetchFindingsFailure
-    | SetSelectedFinding
-    | UnsetSelectedFinding;
+    | SetSelectedFinding;

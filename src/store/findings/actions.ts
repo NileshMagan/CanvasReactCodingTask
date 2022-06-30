@@ -2,8 +2,7 @@ import {
     FETCH_FINDINGS_REQUEST,
     FETCH_FINDINGS_SUCCESS,
     FETCH_FINDINGS_FAILURE,
-    SET_SELECTED_FINDING,
-    UNSET_SELECTED_FINDING
+    SET_SELECTED_FINDING
   } from "./actionTypes";
   import {
     FetchFindingsRequest,
@@ -12,8 +11,6 @@ import {
     FetchFindingsFailure,
     FetchFindingsFailurePayload,
     SetSelectedFindingPayload,
-    UnsetSelectedFindingPayload,
-    UnsetSelectedFinding,
     SetSelectedFinding,
   } from "./types";
 
@@ -43,7 +40,3 @@ import {
     payload,
   });
   
-  export const unsetSelectedFinding = (payload: UnsetSelectedFindingPayload): UnsetSelectedFinding => ({
-    type: UNSET_SELECTED_FINDING,
-    payload,
-  });
