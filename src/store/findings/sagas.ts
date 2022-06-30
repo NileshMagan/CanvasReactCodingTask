@@ -69,7 +69,7 @@ function* findingsSaga() {
   //            takeLatest(SET_SELECTED_FINDING, setSelectedFindingSaga),
   //            takeLatest(UNSET_SELECTED_FINDING, unsetSelectedFindingSaga)]);
   yield takeEvery(FETCH_FINDINGS_REQUEST, fetchFindingsSaga);
-  yield takeLatest(SET_SELECTED_FINDING, setSelectedFindingSaga);
+  // yield takeLatest(SET_SELECTED_FINDING, setSelectedFindingSaga);
   // yield takeEvery(UNSET_SELECTED_FINDING, unsetSelectedFindingSaga);
   // yield takeEvery(FETCH_FINDINGS_REQUEST, () => console.log('hwhrurjerujenjernjrfn'));
   console.log('triggered');

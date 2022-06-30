@@ -29,12 +29,19 @@ const Canvas: FC<{
         return;
 
       techTaskCanvas!.on('mouse:over', function(e) {
-        const indexObject = (e.target! as fabric.Group).item(2);
-        // console.log("MOUSE IN BB", indexObject.get("text"));
-        });
+        try {
+          const indexObject = (e.target! as fabric.Group).item(2);
+          const index = parseInt((indexObject as unknown as fabric.Text)!.text!);
+          console.log("MOUSE IN BB", index);
+          itemSelectedHandler(index + 1);
+        } catch (e: any) {
+          return;
+        }
+      });
     
       techTaskCanvas!.on('mouse:out', function(e) {
         console.log("MOUSE OUT BB", e)
+        itemSelectedHandler(0);
       });
     }, [techTaskCanvas]);
 
