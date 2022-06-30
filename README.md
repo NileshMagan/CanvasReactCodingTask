@@ -71,7 +71,7 @@ It correctly bundles React in production mode and optimizes the build for the be
 A global redux store was added to synchronise data between the components. This made routing data and actions easier overall between components.
 
 # Testing
-Had I not been sick, I would have developed more tests that tested:
+Had I not been sick, I would have developed more tests using Jest/ReactTestinglibrary  that tested:
 - The UI components
     - Front end styling
     - When data comes in (onload/componentMounting/componentUnmounting)

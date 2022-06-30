@@ -1,7 +1,9 @@
 import React, { useEffect, useState, useRef, FC, useMemo } from "react";
 import { fabric } from "fabric";
 import { red } from "@mui/material/colors";
-import { CANVAS_CENTER, CANVAS_HEIGHT, CANVAS_WIDTH } from "./canvas-constants";
+import { CANVAS_CENTER, CANVAS_HEIGHT, CANVAS_WIDTH } from "../../constants/canvas-constants";
+import { usePrevious } from "../../helpers/hook-helpers";
+import { FINDING_RADIAL_TYPE } from "../../constants/data-constants";
 
 const Canvas: FC<{     
   findings: any[], 
@@ -12,16 +14,8 @@ const Canvas: FC<{
   selectedFinding, 
   itemSelectedHandler 
 }) => {
-    const usePrevious = (value: any) => {
-      const ref = useRef();
-      useEffect(() => {
-        ref.current = value;
-      });
-      return ref.current;
-    }
     const canvasRef = useRef<HTMLCanvasElement>(null);
-    const [techTaskCanvas, setTechTaskCanvas] =
-      useState<fabric.Canvas | null>(null);      
+    const [techTaskCanvas, setTechTaskCanvas] = useState<fabric.Canvas | null>(null);      
     const prevFinding = usePrevious( selectedFinding );
 
     useMemo(() => {
@@ -32,7 +26,7 @@ const Canvas: FC<{
         try {
           const indexObject = (e.target! as fabric.Group).item(2);
           const index = parseInt((indexObject as unknown as fabric.Text)!.text!);
-          console.log("MOUSE IN BB", index);
+
           itemSelectedHandler(index + 1);
         } catch (e: any) {
           return;
@@ -40,14 +34,9 @@ const Canvas: FC<{
       });
     
       techTaskCanvas!.on('mouse:out', function(e) {
-        console.log("MOUSE OUT BB", e)
         itemSelectedHandler(0);
       });
-    }, [techTaskCanvas]);
-
-    useEffect(() => {
-      console.log("CANVAS SEEING: " + selectedFinding);
-    }, [selectedFinding]);
+    }, [techTaskCanvas, itemSelectedHandler]);
 
     useEffect(() => {
       const options = {};
@@ -60,7 +49,6 @@ const Canvas: FC<{
       };
     }, []);
 
-    
     const covertRadialToAbsolute = (hours: number, minutes: number, distanceFromCenter: number) => {
       // Convert hours + minutes to angle
       const degrees = ((hours/12) * 360) + ((minutes/60) * 30);
@@ -72,7 +60,6 @@ const Canvas: FC<{
     }
 
     const generateFinding = (x: number, y: number, label: string, index: number) : any => {
-
       const circle = new fabric.Circle({
         radius: 10,
         fill: "red",
@@ -115,7 +102,7 @@ const Canvas: FC<{
         
         let absolutePositioning = { x: x, y: y}; 
 
-        if (type == "radial") {
+        if (type === FINDING_RADIAL_TYPE) {
           absolutePositioning = covertRadialToAbsolute(hours, minutes, distanceFromCenter);
         }
         console.log(label, absolutePositioning.x, absolutePositioning.y);

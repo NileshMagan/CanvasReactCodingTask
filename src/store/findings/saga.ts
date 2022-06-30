@@ -1,5 +1,6 @@
 import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { API } from "../../api/api";
+import { Finding } from "../../data-structures/data";
 
 import { fetchFindingsFailure, fetchFindingsSuccess } from "./actions";
 import { FETCH_FINDINGS_REQUEST } from "./actionTypes";
@@ -9,7 +10,7 @@ import { FETCH_FINDINGS_REQUEST } from "./actionTypes";
 */
 function* fetchFindingsSaga() {
   try {
-    const response: any[] =  yield call(API.GetFindings);
+    const response: Finding[] =  yield call(API.GetFindings);
 
     // Add IDs
     if (response) {
@@ -51,7 +52,7 @@ function* fetchFindingsSaga() {
 */
 
 function* findingsSaga() {
-  yield takeEvery(FETCH_FINDINGS_REQUEST, fetchFindingsSaga);
+  yield takeLatest(FETCH_FINDINGS_REQUEST, fetchFindingsSaga);
 }
 
 export default findingsSaga;

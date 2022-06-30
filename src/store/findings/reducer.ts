@@ -15,7 +15,7 @@ import {
     error: null,
   };
   
-  export default (state = initialState, action: FindingsActions) => {
+  const stateHandler = (state = initialState, action: FindingsActions) => {
     switch (action.type) {
       case FETCH_FINDINGS_REQUEST:
         return {
@@ -47,3 +47,5 @@ import {
         };
     }
   };
+
+  export default stateHandler;
