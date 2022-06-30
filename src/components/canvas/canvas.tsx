@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef, FC, useMemo } from "react";
 import { fabric } from "fabric";
-import { red } from "@mui/material/colors";
 import { CANVAS_CENTER, CANVAS_HEIGHT, CANVAS_WIDTH } from "../../constants/canvas-constants";
 import { usePrevious } from "../../helpers/hook-helpers";
 import { FINDING_RADIAL_TYPE } from "../../constants/data-constants";

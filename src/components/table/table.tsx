@@ -1,5 +1,4 @@
 import React, { useEffect, useState, FC } from "react";
-import { findConfigFile } from "typescript";
 import classnames from "classnames";
 import "./table.scss";
 import { Props } from "../shared-props/findings";

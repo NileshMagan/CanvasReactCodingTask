@@ -1,9 +1,6 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
-
 import Table from "./table.container";
 import { Props } from "../shared-props/findings";
-import { API } from "../../api/api";
 import renderer from 'react-test-renderer';
 
 const testFindings = [

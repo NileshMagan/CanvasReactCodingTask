@@ -1,4 +1,3 @@
-import { idText } from "typescript";
 import {
     FETCH_FINDINGS_REQUEST,
     FETCH_FINDINGS_SUCCESS,
