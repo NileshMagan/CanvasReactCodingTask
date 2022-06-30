@@ -4,12 +4,9 @@ import { red } from "@mui/material/colors";
 import { CANVAS_CENTER, CANVAS_HEIGHT, CANVAS_WIDTH } from "../../constants/canvas-constants";
 import { usePrevious } from "../../helpers/hook-helpers";
 import { FINDING_RADIAL_TYPE } from "../../constants/data-constants";
+import { Props } from "../shared-props/findings";
 
-const Canvas: FC<{     
-  findings: any[], 
-  selectedFinding: number, 
-  itemSelectedHandler: Function 
-}> = ({ 
+const Canvas: FC<Props> = ({ 
   findings,
   selectedFinding, 
   itemSelectedHandler 
@@ -73,7 +70,7 @@ const Canvas: FC<{
       const text = new fabric.Text(label, {
         fontFamily: "Arial",
         fontSize: 12,
-        fill: "black",
+        fill: "yellow",
         left: 24,
         top: 0,
         selectable: false,
@@ -95,24 +92,22 @@ const Canvas: FC<{
     } 
 
     useEffect(() => {
-      const addFinding = ({ type, x, y, label, hours, minutes, distanceFromCenter }: any, index: number) => {
+      findings.forEach(({ type, x, y, label, hours, minutes, distanceFromCenter }: any, index: number) => {
         if (!techTaskCanvas) {
           return;
         }
         
-        let absolutePositioning = { x: x, y: y}; 
+        let absolutePositioning = { x, y }; 
 
         if (type === FINDING_RADIAL_TYPE) {
           absolutePositioning = covertRadialToAbsolute(hours, minutes, distanceFromCenter);
         }
-        console.log(label, absolutePositioning.x, absolutePositioning.y);
+
         const finding = generateFinding(absolutePositioning.x, absolutePositioning.y, label, index);
         
         techTaskCanvas.add(finding);
-      };
+      });
       
-
-      findings.forEach(addFinding);
     }, [findings, techTaskCanvas]);
 
     useEffect(() => {
@@ -132,12 +127,12 @@ const Canvas: FC<{
             fill: "blue"
           });
         }
+
         techTaskCanvas.renderAll();
-        console.log("LOGGGGGGGGGGGGGGGGEDDDDDDDDDD");
       } catch (e: any) {
 
       }
-    }, [selectedFinding, prevFinding]);
+    }, [selectedFinding, prevFinding, techTaskCanvas]);
   
     return (
       <div className="Canvas">

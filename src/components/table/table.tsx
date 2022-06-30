@@ -2,12 +2,9 @@ import React, { useEffect, useState, FC } from "react";
 import { findConfigFile } from "typescript";
 import classnames from "classnames";
 import "./table.scss";
+import { Props } from "../shared-props/findings";
 
-const Table: FC<{ 
-    findings: any[], 
-    selectedFinding: number, 
-    itemSelectedHandler: Function 
-}> = ({ 
+const Table: FC<Props> = ({ 
     findings,
     selectedFinding, 
     itemSelectedHandler 
@@ -16,23 +13,15 @@ const Table: FC<{
     const [currentSelectedFinding, setCurrentSelectedFinding] = useState(0);
   
     useEffect(() => {
-        if (isShown && itemSelectedHandler) {
-            console.log("HOVERED ON: " + currentSelectedFinding);
-            // itemSelectedHandler(currentSelectedFinding);
-        } else if (!isShown && itemSelectedHandler) {
-            console.log("HOVERED OFF: " + currentSelectedFinding);
-            // itemSelectedHandler();
-        }
         if (itemSelectedHandler) {
             itemSelectedHandler(currentSelectedFinding);
         }
     }, [isShown, currentSelectedFinding, itemSelectedHandler]);
 
-    const findingHandler = (id: number, entered: boolean) => { // Need to make sure label is always unique
+    const findingHandler = (id: number, entered: boolean) => { 
         setCurrentSelectedFinding(id);
         setIsShown(entered);
     }
-
 
     return (
     <div>
@@ -42,7 +31,7 @@ const Table: FC<{
                 return (
                     <tr 
                         className={classnames({
-                            highlighted: (selectedFinding  - 1) == index
+                            highlighted: (selectedFinding  - 1) === index
                         })}
                         onClick={() => itemSelectedHandler()} 
                         onMouseEnter={() => findingHandler(finding.id, true)}
