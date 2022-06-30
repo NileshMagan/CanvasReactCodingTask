@@ -1,5 +1,3 @@
-import { Action } from "redux";
-import axios from "axios";
 import { all, call, put, takeEvery, takeLatest } from "redux-saga/effects";
 import { API } from "../../api/api";
 

@@ -1,3 +1,5 @@
+To jump to design decisions and considerations, please scroll to the bottom
+
 # 🧠 See-Mode Front-End Tech Task
 
 👋 Hi and welcome to the See-Mode front-end tech task.
@@ -63,3 +65,26 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
+
+# Design decisions and considerations<a name="design"></a>
+# Efficiency
+A global redux store was added to synchronise data between the components 
+
+# Testing
+Had I not been sick, I would have developed more tests that tested:
+- The UI components
+    - Front end styling
+    - When data comes in (onload/componentMounting/componentUnmounting)
+- Each aspect of redux
+    - Action dispatching
+    - Saga
+    - Reducers
+    - Selectors
+- API calls
+    - Handling of success, loading, error states
+    - Handling of data with more attention to if the response comes back empty, or structured incorrectly etc.
+
+# Future work
+More work could be done on:
+- Making the fill color dynamic so there is less need for previous state
+- Making the indexing of objects in the canvas file not a separate text object
