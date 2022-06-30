@@ -88,3 +88,4 @@ Had I not been sick, I would have developed more tests using Jest/ReactTestingli
 More work could be done on:
 - Making the fill color dynamic so there is less need for previous state
 - Making the indexing of objects in the canvas file not a separate text object
+- Removals of remaining "any" keywords
