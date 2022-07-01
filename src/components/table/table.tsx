@@ -26,7 +26,7 @@ const Table: FC<Props> = ({
     <div>
         <h2 onClick={() => itemSelectedHandler()} >Findings</h2>
         <table className="FindingsTable">
-            {findings.map((finding: any, index: number) => {
+            {findings.map((finding: any, index: number) => { // Check if findings are valid
                 return (
                     <tr 
                         className={classnames({

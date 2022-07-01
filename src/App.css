@@ -1,9 +1,13 @@
-/* .App {
+.App {
   padding: 20px;
+  background: #020000;
+  width: 100vw;
+  height: 100vh;
+  color: white;
 }
 
 .CanvasWrapper {
-  background: #eee;
+  background: #020000;
   border: 1px solid #ddd;
   width: 500px;
   height: 500px;
@@ -20,5 +24,12 @@
 }
 
 .content-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-} */
+}
+
+.content-container div {
+  margin: 10px;
+}
+/*# sourceMappingURL=App.css.map */

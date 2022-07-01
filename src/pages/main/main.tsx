@@ -16,7 +16,7 @@ const Main: FC<{
   }
   
   useEffect(() => { 
-    fetchData();
+    fetchData(); // Fix duplicate call
     console.log('getting data');
   }, []);
 
